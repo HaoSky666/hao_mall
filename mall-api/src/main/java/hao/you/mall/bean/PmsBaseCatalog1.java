@@ -16,9 +16,10 @@ public class PmsBaseCatalog1 implements Serializable {
     @Column
     private String name;
 
+    // 不是数据库中字段
     @Transient
-//    private List<BaseCatalog2> catalog2s;
-//
+    private List<PmsBaseCatalog2> catalog2;
+
     public String getId() {
         return id;
     }
@@ -33,6 +34,14 @@ public class PmsBaseCatalog1 implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<PmsBaseCatalog2> getCatalog2() {
+        return catalog2;
+    }
+
+    public void setCatalog2(List<PmsBaseCatalog2> catalog2) {
+        this.catalog2 = catalog2;
     }
 }
 

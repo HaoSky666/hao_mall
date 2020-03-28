@@ -19,8 +19,8 @@ public class PmsSkuImage implements Serializable {
     String imgName;
     @Column
     String imgUrl;
-    @Column
-    String productImgId;
+    @Column(name = "product_img_id")
+    String spuImgId;
     @Column
     String isDefault;
 
@@ -56,12 +56,12 @@ public class PmsSkuImage implements Serializable {
         this.imgUrl = imgUrl;
     }
 
-    public String getProductImgId() {
-        return productImgId;
+    public String getSpuImgId() {
+        return spuImgId;
     }
 
-    public void setProductImgId(String productImgId) {
-        this.productImgId = productImgId;
+    public void setSpuImgId(String spuImgId) {
+        this.spuImgId = spuImgId;
     }
 
     public String getIsDefault() {
@@ -70,5 +70,17 @@ public class PmsSkuImage implements Serializable {
 
     public void setIsDefault(String isDefault) {
         this.isDefault = isDefault;
+    }
+
+    @Override
+    public String toString() {
+        return "PmsSkuImage{" +
+                "id='" + id + '\'' +
+                ", skuId='" + skuId + '\'' +
+                ", imgName='" + imgName + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", spuImgId='" + spuImgId + '\'' +
+                ", isDefault='" + isDefault + '\'' +
+                '}';
     }
 }

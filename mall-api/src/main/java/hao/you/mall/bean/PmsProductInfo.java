@@ -16,8 +16,8 @@ public class PmsProductInfo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
-    @Column
-    private String productName;
+    @Column(name = "product_name")
+    private String spuName;
 
     @Column
     private String description;
@@ -26,35 +26,33 @@ public class PmsProductInfo implements Serializable {
     private  String catalog3Id;
 
     @Transient
-    private List<PmsProductSaleAttr> pmsProductSaleAttrList;
+    private List<PmsProductSaleAttr> spuSaleAttrList;
     @Transient
-    private List<PmsProductImage> pmsProductImageList;
+    private List<PmsProductImage> spuImageList;
 
-
-    public String getProductName() {
-        return productName;
+    public String getSpuName() {
+        return spuName;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setSpuName(String spuName) {
+        this.spuName = spuName;
     }
 
-    public List<PmsProductSaleAttr> getPmsProductSaleAttrList() {
-        return pmsProductSaleAttrList;
+    public List<PmsProductSaleAttr> getSpuSaleAttrList() {
+        return spuSaleAttrList;
     }
 
-    public void setPmsProductSaleAttrList(List<PmsProductSaleAttr> pmsProductSaleAttrList) {
-        this.pmsProductSaleAttrList = pmsProductSaleAttrList;
+    public void setSpuSaleAttrList(List<PmsProductSaleAttr> spuSaleAttrList) {
+        this.spuSaleAttrList = spuSaleAttrList;
     }
 
-    public List<PmsProductImage> getPmsProductImageList() {
-        return pmsProductImageList;
+    public List<PmsProductImage> getSpuImageList() {
+        return spuImageList;
     }
 
-    public void setPmsProductImageList(List<PmsProductImage> pmsProductImageList) {
-        this.pmsProductImageList = pmsProductImageList;
+    public void setSpuImageList(List<PmsProductImage> spuImageList) {
+        this.spuImageList = spuImageList;
     }
-
 
     public String getId() {
         return id;

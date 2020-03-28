@@ -2,6 +2,7 @@ package hao.you.mall.bean;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @param
@@ -9,7 +10,7 @@ import java.io.Serializable;
  */
 public class PmsBaseAttrInfo implements Serializable {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //主键返回策略
     @Id
     @Column
     private String id;
@@ -20,7 +21,7 @@ public class PmsBaseAttrInfo implements Serializable {
     @Column
     private String isEnabled;
     @Transient
-//    List<BaseAttrValue> attrValueList;
+    List<PmsBaseAttrValue> attrValueList;
 
     public String getId() {
         return id;
@@ -54,11 +55,11 @@ public class PmsBaseAttrInfo implements Serializable {
         this.isEnabled = isEnabled;
     }
 
-//    public List<BaseAttrValue> getAttrValueList() {
-//        return attrValueList;
-//    }
-//
-//    public void setAttrValueList(List<BaseAttrValue> attrValueList) {
-//        this.attrValueList = attrValueList;
-//    }
+    public List<PmsBaseAttrValue> getAttrValueList() {
+        return attrValueList;
+    }
+
+    public void setAttrValueList(List<PmsBaseAttrValue> attrValueList) {
+        this.attrValueList = attrValueList;
+    }
 }
