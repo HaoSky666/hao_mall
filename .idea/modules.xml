@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/hao_mall.iml" filepath="$PROJECT_DIR$/.idea/hao_mall.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-api/mall-api.iml" filepath="$PROJECT_DIR$/mall-api/mall-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-cart-service/mall-cart-service.iml" filepath="$PROJECT_DIR$/mall-cart-service/mall-cart-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-cart-web/mall-cart-web.iml" filepath="$PROJECT_DIR$/mall-cart-web/mall-cart-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-common-util/mall-common-util.iml" filepath="$PROJECT_DIR$/mall-common-util/mall-common-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-item-web/mall-item-web.iml" filepath="$PROJECT_DIR$/mall-item-web/mall-item-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-manage-service/mall-manage-service.iml" filepath="$PROJECT_DIR$/mall-manage-service/mall-manage-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-manage-web/mall-manage-web.iml" filepath="$PROJECT_DIR$/mall-manage-web/mall-manage-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-parent/mall-parent.iml" filepath="$PROJECT_DIR$/mall-parent/mall-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-search-service/mall-search-service.iml" filepath="$PROJECT_DIR$/mall-search-service/mall-search-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-search-web/mall-search-web.iml" filepath="$PROJECT_DIR$/mall-search-web/mall-search-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-service-util/mall-service-util.iml" filepath="$PROJECT_DIR$/mall-service-util/mall-service-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-user-service/mall-user-service.iml" filepath="$PROJECT_DIR$/mall-user-service/mall-user-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-user-web/mall-user-web.iml" filepath="$PROJECT_DIR$/mall-user-web/mall-user-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-web-util/mall-web-util.iml" filepath="$PROJECT_DIR$/mall-web-util/mall-web-util.iml" />
+    </modules>
+  </component>
+</project>

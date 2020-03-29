@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hao.you.mall.manage.mapper.BaseAttrInfoMapper">
+
+    <!-- ${}拼接字符串  #{}赋值 -->
+    <select id="selectAttrValueListByValueId" resultMap="PmsBaseAttrInfoMap" >
+            SELECT
+                pa.*,pa.id as pa_id,pb.*,pb.id as pb_id
+            FROM
+                pms_base_attr_info pa,
+                pms_base_attr_value pb
+            WHERE
+                pa.id = pb.attr_id
+            AND pb.id IN (${valueIdStr})
+    </select>
+    <!--  property为对象中对应值名称，column为赋值， -->
+    <resultMap id="PmsBaseAttrInfoMap" type="hao.you.mall.bean.PmsBaseAttrInfo" autoMapping="true">
+        <result column="pa_id" property="id"/>
+        <collection property="attrValueList" ofType="hao.you.mall.bean.PmsBaseAttrValue" autoMapping="true">
+            <result column="pb_id" property="id"/>
+        </collection>
+    </resultMap>
+
+</mapper>
