@@ -1,7 +1,6 @@
 package hao.you.mall.bean;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -9,38 +8,29 @@ import java.util.Date;
  * @param
  * @return
  */
-public class PaymentInfo {
+public class PaymentInfo  implements Serializable {
 
-    @Column
-    @Id
-    private String  id;
+    private String id;
 
-    @Column
-    private String outTradeNo;
+    private String orderSn;
 
-    @Column
     private String orderId;
 
-    @Column
     private String alipayTradeNo;
 
-    @Column
     private BigDecimal totalAmount;
 
-    @Column
-    private String Subject;
+    private String subject;
 
-    @Column
     private String paymentStatus;
 
-    @Column
     private Date createTime;
 
-    @Column
-    private Date callbackTime;
+    private Date confirmTime;
 
-    @Column
     private String callbackContent;
+
+    private Date callbackTime;
 
     public String getId() {
         return id;
@@ -50,12 +40,12 @@ public class PaymentInfo {
         this.id = id;
     }
 
-    public String getOutTradeNo() {
-        return outTradeNo;
+    public String getOrderSn() {
+        return orderSn;
     }
 
-    public void setOutTradeNo(String outTradeNo) {
-        this.outTradeNo = outTradeNo;
+    public void setOrderSn(String orderSn) {
+        this.orderSn = orderSn;
     }
 
     public String getOrderId() {
@@ -83,11 +73,11 @@ public class PaymentInfo {
     }
 
     public String getSubject() {
-        return Subject;
+        return subject;
     }
 
     public void setSubject(String subject) {
-        Subject = subject;
+        this.subject = subject;
     }
 
     public String getPaymentStatus() {
@@ -106,12 +96,12 @@ public class PaymentInfo {
         this.createTime = createTime;
     }
 
-    public Date getCallbackTime() {
-        return callbackTime;
+    public Date getConfirmTime() {
+        return confirmTime;
     }
 
-    public void setCallbackTime(Date callbackTime) {
-        this.callbackTime = callbackTime;
+    public void setConfirmTime(Date confirmTime) {
+        this.confirmTime = confirmTime;
     }
 
     public String getCallbackContent() {
@@ -120,5 +110,13 @@ public class PaymentInfo {
 
     public void setCallbackContent(String callbackContent) {
         this.callbackContent = callbackContent;
+    }
+
+    public Date getCallbackTime() {
+        return callbackTime;
+    }
+
+    public void setCallbackTime(Date callbackTime) {
+        this.callbackTime = callbackTime;
     }
 }

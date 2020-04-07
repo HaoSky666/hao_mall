@@ -1,36 +1,51 @@
 package hao.you.mall.search.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import hao.you.mall.annotations.LoginRequired;
 import hao.you.mall.bean.*;
+import hao.you.mall.common.Constants;
 import hao.you.mall.service.AttrService;
 import hao.you.mall.service.SearchService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
 @Controller
 public class SearchController {
 
     @Reference
-    private SearchService searchService;
+    SearchService searchService;
 
     @Reference
-    private AttrService attrService;
+    AttrService attrService;
 
-    @RequestMapping("index")
-//    @LoginRequired(loginSuccess = false)
-    public String index() {
+    @RequestMapping(value = "index", method = RequestMethod.GET )
+    @LoginRequired(loginSuccess = false)
+    public String index(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
+        String memberId = (String) request.getAttribute(Constants.memberId);
+        String nickName = (String) request.getAttribute(Constants.nickname);
+
+        modelMap.put("memberId", memberId);
+        modelMap.put("nickName", nickName);
         return "index";
     }
 
     @RequestMapping("list.html")
-    public String list(PmsSearchParam pmsSearchParam, ModelMap modelMap) {
+    @LoginRequired(loginSuccess = false)
+    public String list(HttpServletRequest request, HttpServletResponse response, PmsSearchParam pmsSearchParam, ModelMap modelMap) {
+        String memberId = (String) request.getAttribute(Constants.memberId);
+        String nickName = (String) request.getAttribute(Constants.nickname);
+        modelMap.put("memberId", memberId);
+        modelMap.put("nickName", nickName);
         //根据查询参数查询sku集合
         List<PmsSearchSkuInfo> list = searchService.list(pmsSearchParam);
-        if (list==null || list.size() == 0) {
+        if (list == null || list.size() == 0) {
             return "index";
         }
         modelMap.put("skuLsInfoList", list);
@@ -45,7 +60,7 @@ public class SearchController {
         }
 
         //es中平台属性值为空时，这里会报错，这个是防止错误数据
-        if(valueIdSet.size() == 0){
+        if (valueIdSet.size() == 0) {
             return "index";
         }
 
@@ -86,7 +101,6 @@ public class SearchController {
 
         String urlParam = getUrlParam(pmsSearchParam);
         modelMap.put("urlParam", urlParam);
-
         return "list";
     }
 

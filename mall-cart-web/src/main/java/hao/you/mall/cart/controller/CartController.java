@@ -2,6 +2,7 @@ package hao.you.mall.cart.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSON;
+import hao.you.mall.annotations.LoginRequired;
 import hao.you.mall.bean.OmsCartItem;
 import hao.you.mall.bean.PmsSkuInfo;
 import hao.you.mall.common.Constants;
@@ -29,23 +30,12 @@ public class CartController {
     @Reference
     CartService cartService;
 
-    //交易界面
-    @RequestMapping("toTrade")
-//    @LoginRequired(loginSuccess = true)
-    public String toTrade(HttpServletResponse response, HttpServletRequest request, ModelMap modelMap) {
-        //使用强转，防止产生 null
-        String memberId = (String) request.getAttribute(Constants.memberId);
-        String nickname = (String) request.getAttribute(Constants.nickname);
-
-        return "toTrade";
-    }
-
-
     @RequestMapping("cartList")
-//    @LoginRequired(loginSuccess = false)
+    @LoginRequired(loginSuccess = false)
     public String cartList(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
         List<OmsCartItem> omsCartItemList = new ArrayList<>();
         String memberId = (String) request.getAttribute(Constants.memberId);
+        String nickName = (String) request.getAttribute(Constants.nickname);
         if (StringUtils.isNotBlank(memberId)) {
             omsCartItemList = cartService.cartList(memberId);
         } else {
@@ -59,13 +49,15 @@ public class CartController {
 //        //被勾选商品总额
         BigDecimal totalAmount = getTotalPrice(omsCartItemList);
         modelMap.put("totalAmount", totalAmount);
+        modelMap.put("memberId", memberId);
+        modelMap.put("nickName", nickName);
         return "cartList";
     }
 
     //购物车添加数量功能，需要修改前端页面
     @RequestMapping("checkCart")
-//    @LoginRequired(loginSuccess = false)
-    public String checkCart(String isChecked, String skuId, HttpServletRequest request,HttpServletResponse response, ModelMap modelMap) {
+    @LoginRequired(loginSuccess = false)
+    public String checkCart(String isChecked, String skuId, HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
         String memberId = (String) request.getAttribute(Constants.memberId);
         List<OmsCartItem> omsCartItemList = null;
         if (StringUtils.isNotBlank(memberId)) {
@@ -81,7 +73,7 @@ public class CartController {
             String cartListCookie = CookieUtil.getCookieValue(request, "cartListCookie", true);
             omsCartItemList = JSON.parseArray(cartListCookie, OmsCartItem.class);
             for (OmsCartItem omsCartItem : omsCartItemList) {
-                if(skuId.equals(omsCartItem.getProductSkuId())){
+                if (skuId.equals(omsCartItem.getProductSkuId())) {
                     omsCartItem.setIsChecked(isChecked);
                 }
             }
@@ -96,7 +88,7 @@ public class CartController {
     }
 
     @RequestMapping("addToCart")
-//    @LoginRequired(loginSuccess = false)
+    @LoginRequired(loginSuccess = false)
     public String addToCart(String skuId, int quantity, HttpServletRequest request, HttpServletResponse response) {
         String memberId = (String) request.getAttribute(Constants.memberId);
         //购物车列表
@@ -194,5 +186,4 @@ public class CartController {
         omsCartItem.setQuantity(quantity);
         omsCartItem.setIsChecked("1");
     }
-
 }

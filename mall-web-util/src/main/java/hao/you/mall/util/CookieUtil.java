@@ -96,7 +96,6 @@ public class CookieUtil {
             String[] ary = domainName.split("\\:");
             domainName = ary[0];
         }
-        System.out.println("domainName = " + domainName);
         return domainName;
     }
     /***

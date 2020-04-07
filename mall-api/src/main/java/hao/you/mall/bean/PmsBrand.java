@@ -3,19 +3,19 @@ package hao.you.mall.bean;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-public class PmsBrand  implements Serializable {
+public class PmsBrand implements Serializable {
 
     @Id
     private String id;
-    private String        name;
+    private String name;
     private String firstLetter;
-    private int         sort;
-    private int factoryStatus;
-    private int         showStatus;
-    private int productCount;
-    private String         productCommentCount;
+    private Integer sort;
+    private Integer factoryStatus;
+    private Integer showStatus;
+    private Integer productCount;
+    private String productCommentCount;
     private String logo;
-    private String         bigPic;
+    private String bigPic;
     private String brandStory;
 
     public String getId() {
@@ -42,35 +42,35 @@ public class PmsBrand  implements Serializable {
         this.firstLetter = firstLetter;
     }
 
-    public int getSort() {
+    public Integer getSort() {
         return sort;
     }
 
-    public void setSort(int sort) {
+    public void setSort(Integer sort) {
         this.sort = sort;
     }
 
-    public int getFactoryStatus() {
+    public Integer getFactoryStatus() {
         return factoryStatus;
     }
 
-    public void setFactoryStatus(int factoryStatus) {
+    public void setFactoryStatus(Integer factoryStatus) {
         this.factoryStatus = factoryStatus;
     }
 
-    public int getShowStatus() {
+    public Integer getShowStatus() {
         return showStatus;
     }
 
-    public void setShowStatus(int showStatus) {
+    public void setShowStatus(Integer showStatus) {
         this.showStatus = showStatus;
     }
 
-    public int getProductCount() {
+    public Integer getProductCount() {
         return productCount;
     }
 
-    public void setProductCount(int productCount) {
+    public void setProductCount(Integer productCount) {
         this.productCount = productCount;
     }
 

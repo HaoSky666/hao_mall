@@ -92,19 +92,28 @@
                     <a href="#">海外</a>
                 </div>
             </b>
+
             <ul>
-                <li>
-                    <a href="http://passport.mall.com:8085/index?ReturnUrl=http://search.mall.com:8083/index">你好，请登录</a>
-                </li>
-                <li>
-                    <a href="/注册页面\index.html" class="li_2">免费注册</a>
-                </li>
-                <span>|</span>
-                <li>
-                    <a href="#">我的订单</a>
-                </li>
+                <div th:switch="${nickName != null}">
+                    <div th:case="true">
+                        <li>
+                            你好，<a href="#" th:text="${nickName}"></a>
+                        </li>
+                        <span>|</span>
+                        <li>
+                            <a href="http://order.mall.com:8086/toOrderList">我的订单</a>
+                        </li>
+                    </div>
 
-
+                    <div th:case="false">
+                        <li>
+                            <a href="http://passport.mall.com:8085/index?ReturnUrl=http://mall.com:8083/index">你好，请登录</a>
+                        </li>
+                        <li>
+                            <a href="#" class="li_2">免费注册</a>
+                        </li>
+                    </div>
+                </div>
             </ul>
         </div>
     </div>
@@ -119,11 +128,7 @@
         <div class="header_ico">
             <div class="header_gw">
                 <img src="/index/img/img_15.png"/>
-                <span><a href="/购物车\One_JDshop.html">我的购物车</a></span>
-                <span>0</span>
-            </div>
-            <div class="header_ko">
-                <p>购物车中还没有商品，赶紧选购吧！</p>
+                <span><a href="http://cart.mall.com:8084/cartList">我的购物车</a></span>
             </div>
         </div>
         <div class="header_form_nav">
@@ -144,7 +149,7 @@
                     <a href="#">洗衣机节</a>
                 </li>
                 <li>
-                    <a href="#">七度空间卫生巾</a>
+                    <a href="#">斗罗大陆</a>
                 </li>
                 <li>
                     <a href="#">自动波箱油</a>

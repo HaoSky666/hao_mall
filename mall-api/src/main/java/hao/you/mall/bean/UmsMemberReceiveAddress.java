@@ -4,17 +4,25 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 public class UmsMemberReceiveAddress implements Serializable {
-
     @Id
     private String id;
+
     private String memberId;
-    private String  name;
-    private String  phoneNumber;
-    private int defaultStatus;
+
+    private String name;
+
+    private String phoneNumber;
+
+    private Integer defaultStatus;
+
     private String postCode;
+
     private String province;
+
     private String city;
+
     private String region;
+
     private String detailAddress;
 
     public String getId() {
@@ -49,11 +57,11 @@ public class UmsMemberReceiveAddress implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getDefaultStatus() {
+    public Integer getDefaultStatus() {
         return defaultStatus;
     }
 
-    public void setDefaultStatus(int defaultStatus) {
+    public void setDefaultStatus(Integer defaultStatus) {
         this.defaultStatus = defaultStatus;
     }
 

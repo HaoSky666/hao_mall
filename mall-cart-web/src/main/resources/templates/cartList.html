@@ -21,12 +21,23 @@
                 </li>
             </ul>
             <ul class="header-right">
-                <li><a href="../登录页面\index.html" style="color: red;">你好，请登录</a></li>
-                <li><a href="../注册页面\index.html" >免费注册</a></li>
-                <li class="spacer"></li>
-                <li><a href="">我的订单</a></li>
-                <li class="spacer"></li>
+                <div th:switch="${nickName != null}">
+                    <div th:case="true">
+                        <li>
+                            你好，<a href="#" th:text="${nickName}"></a>
+                        </li>
+                        <span>|</span>
+                        <li>
+                            <a href="http://order.mall.com:8086/toOrderList">我的订单</a>
+                        </li>
+                    </div>
 
+                    <div th:case="false">
+                        <li>
+                            <a href="http://passport.mall.com:8085/index?ReturnUrl=http://mall.com:8083/index">你好，请登录</a>
+                        </li>
+                    </div>
+                </div>
             </ul>
             <div style="clear: both;"></div>
         </div>
@@ -34,23 +45,16 @@
     </a>
 </header>
 
-
-
-
 <div class="one_search">
 
     <div class="one_sousuo">
         <div class="one_search_top">
             <div class="one_top_left">
-                <a href="../" class="one_left_logo"><img src="/img/logo.png" style="height: 60px;width:180px;"></a>
+                <a href="http://mall.com:8083/index" class="one_left_logo"><img src="/img/logo.png" style="height: 60px;width:180px;"></a>
                 <a href="#" class="one_left_link">购物车</a>
             </div>
-            <div class="one_top_right">
-                <input type="text" class="one_right_txt" placeholder="" onfocus="this.placeholder=''"  onblur="this.placeholder='' ">
-                <input type="button" value="搜索" class="one_right_btn">
-            </div>
         </div>
-        <div class="one_search_load"   th:if="${userId}==null" >
+        <div class="one_search_load"   th:if="${memberId}==null" >
             <img src="/img/shop_07.jpg" class="one_load_wraing">
             <span>您还没有登录！登录后购物车的商品将保存到您账号中</span>
             <a href="#"><input type="button" onclick="login()" value="立即登录" class="one_load_btn"></a>
