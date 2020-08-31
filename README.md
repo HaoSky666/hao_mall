@@ -1,5 +1,5 @@
 ### hao_mall
-课程设计之网上商城
+仿京东商城开发
 
 mall-user-service用户服务的service层8070
 mall-user-web用户服务的web层8080
